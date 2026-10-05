@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY hello_flask/app.py .
 
-RUN pip install Flask
+RUN pip install --no-cache-dir Flask PyMySQL cryptography
 
 EXPOSE 5002
 
