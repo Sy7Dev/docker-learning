@@ -4,9 +4,15 @@ services:
     ports:
       - "5001:5002"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
-  mydb:
+  db:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pwd
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pmy-secret-pwd"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
