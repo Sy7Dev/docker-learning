@@ -65,6 +65,12 @@ docker exec -it my-web-app /bin/bash
 # Stop and remove a container
 docker stop my-web-app
 docker rm my-web-app
+
+# Creates a container
+docker build -t my-app-name 
+
+# Runs the container 
+docker run -d -p 8000:8000 my-app-name
 ```
 
 ---
